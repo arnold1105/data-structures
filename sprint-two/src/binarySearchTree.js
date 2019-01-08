@@ -67,11 +67,22 @@ treeMethods.contains = function(value) {
     return true;
   }
   // else if
-    //check value > this.value
-      //check value === this.right.value
-      // else recurse  
-  //recursion
-  //
+    //check if (value < this.value)
+  else if (value === this.left.value) {
+    
+  }
+      //check if (value === this.left.value)
+        // return true;
+      // else recursive case
+        //this.left.contains(value);
+        
+    //check if (value > this.value)
+      //check if (value === this.right.value)
+        //return true;
+        //else recursive case 
+          //this.right.contains(value);
+         
+  //else return false;
 };
 
 treeMethods.depthFirstLog = function(cb) {
