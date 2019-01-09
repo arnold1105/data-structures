@@ -13,28 +13,7 @@ var treeMethods = {};
 treeMethods.insert = function(value) {
   //create the object
   var newNode = BinarySearchTree(value);
- 
-  // if (value < this.value) {
-  //   if (this.left.length === 0){
-  //     this.left.push(newNode);
-  //   } else {
-  //     var next = this.left[0];
-  //     next.insert(value);
-  //     // this.left.insert(value)
-      
-  //   }
-  // } else if (value > this.value){
-  //     if (this.right.length === 0){
-  //       this.right.push(newNode);
-  //     } else {
-  //       var next = this.right[0];
-  //       next.insert(value);
-  //     }
-  // }
-  
-  
-  
-  if (value < this.value) {
+   if (value < this.value) {
     if (!this.left){
       this.left = newNode;
     } else {
@@ -47,9 +26,6 @@ treeMethods.insert = function(value) {
         this.right.insert(value)
       }
   }
-  
-  
- 
   //if value passed in is greater than this.value
    // if this.left is undefined
     // push to this.left
@@ -61,28 +37,30 @@ treeMethods.insert = function(value) {
       //  recursion here
 };
 
-
 treeMethods.contains = function(value) {
+  if (!this.value) {
+    return false;
+  } 
   if (value === this.value){
     return true;
   }
-  // else if
-    //check if (value < this.value)
-  else if (value === this.left.value) {
-    
+  if (value < this.value) {
+    if (!this.left) {
+      return false;
+    }
+    if (this.left.contains(value)) { 
+      return true;
+    }
   }
-      //check if (value === this.left.value)
-        // return true;
-      // else recursive case
-        //this.left.contains(value);
-        
-    //check if (value > this.value)
-      //check if (value === this.right.value)
-        //return true;
-        //else recursive case 
-          //this.right.contains(value);
-         
-  //else return false;
+  if (value > this.value) {
+    if (!this.right) {
+      return false;
+    }
+    if (this.right.contains(value)) { 
+      return true;
+    }
+  }
+     return false;
 };
 
 treeMethods.depthFirstLog = function(cb) {
