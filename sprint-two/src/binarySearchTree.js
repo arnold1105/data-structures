@@ -64,7 +64,19 @@ treeMethods.contains = function(value) {
 };
 
 treeMethods.depthFirstLog = function(cb) {
-  //
+  //apply cb function to cb(this.value) then
+  cb(this.value);
+    //if (!this.left)
+    if (this.left) {
+      //recurse over this.left.value
+      this.left.depthFirstLog(cb);
+    }
+    
+    //if (!this.right)
+    if (this.right) {
+      //recurse over this.right.value
+      this.right.depthFirstLog(cb);
+    }
 };
 
 
